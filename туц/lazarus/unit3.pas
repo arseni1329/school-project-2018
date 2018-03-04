@@ -13,12 +13,15 @@ type
   { Tf3 }
 
   Tf3 = class(TForm)
+    Clform: TBitBtn;
     nextstep: TBitBtn;
     vopros: TLabel;
     vash: TLabel;
     verno: TLabel;
     L4: TLabel;
     L5: TLabel;
+    procedure ClformClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure nextstepClick(Sender: TObject);
   private
     { private declarations }
@@ -28,6 +31,7 @@ type
 MassivStrok = array[0..10] of array[0..50] of string;
 
 procedure mistakesinfo(str2:massivstrok);
+function CloseProgram:boolean;
 var
   f3: Tf3;
   otveti,correct,oshibki:array[0..50] of integer;
@@ -38,6 +42,15 @@ var
 implementation
 
 {$R *.lfm}
+function CloseProgram:boolean;
+begin
+  If MessageDlg('Выход','Вы действительно хотите выйти из программы?',
+    mtConfirmation,mbYesNo,1)=mryes then
+  result:= true
+  else
+    result:= false;
+end;
+
 procedure mistakesinfo(str2:massivstrok);
 var
   str1:string;
@@ -58,7 +71,7 @@ begin
          str1:=str2[j,i];
          if str1<>'' then
        begin
-         if (str1[1]='#') and (str1[2]<>'%') then
+       if (str1[1]='#') and (str1[2]<>'%') then
          begin
            oshibki[k]:=i;
            k:=k+1;
@@ -66,15 +79,14 @@ begin
            h:=h+1;
          end
          else
-         if (str1[1]='%') then
          begin
            correct[p]:=j;
            p:=p+1;
-         end;
+         end
        end;
      end;
- if oshibki[0]<>-1 then
- begin
+if oshibki[0]<>-1 then
+begin
  i:=oshibki[0];
  j:=otveti[0];
  f3.vopros.caption:=str2[0,i];
@@ -83,10 +95,20 @@ begin
  j:=correct[0];
  str1:=str2[j,i];
  f3.verno.caption:=copy(str1,2,length(str1));
-end;
  step:=0;
- str:=str2;
  KolOsh:=k;
+end
+else
+begin
+  f3.vopros.Caption:='';
+  f3.L4.caption:='Вы не бырали ни одного ответа!';
+  f3.verno.Caption:='';
+  f3.L5.Caption:='';
+  f3.vash.Caption:='';
+  step:=p-1;
+  KolOsh:=p;
+end;
+ str:=str2;
 end;
 
 { Tf3 }
@@ -111,6 +133,23 @@ begin
   if KolOsh=step then
      F3.Hide;
 end;
+
+procedure Tf3.ClformClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure Tf3.FormCloseQuery(Sender: TObject; var CanClose: boolean);
+begin
+  if CloseProgram then
+  begin
+     CanClose:=true;
+     Application.Terminate;
+  end
+  else
+    CanClose:=false;
+end;
+
 
 end.
 
