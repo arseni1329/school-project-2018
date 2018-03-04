@@ -1,0 +1,97 @@
+object f2: Tf2
+  Left = 301
+  Height = 236
+  Top = 196
+  Width = 347
+  Caption = 'f2'
+  ClientHeight = 236
+  ClientWidth = 347
+  LCLVersion = '1.6.4.0'
+  object percent: TLabel
+    Left = 16
+    Height = 24
+    Top = 48
+    Width = 55
+    Caption = '15656'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clBlack
+    Font.Height = -21
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object incorrect: TLabel
+    Left = 16
+    Height = 22
+    Top = 80
+    Width = 40
+    Caption = '5656'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clRed
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object total: TLabel
+    Left = 16
+    Height = 22
+    Top = 144
+    Width = 50
+    Caption = '56565'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object correct: TLabel
+    Left = 16
+    Height = 22
+    Top = 112
+    Width = 50
+    Caption = '56565'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Color = clGreen
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 80
+    Height = 31
+    Top = 8
+    Width = 146
+    Caption = 'Результаты:'
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -27
+    Font.Name = 'Times New Roman'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object showmistakes: TBitBtn
+    Left = 162
+    Height = 42
+    Top = 178
+    Width = 161
+    Caption = 'Посмотреть ошибки'
+    OnClick = showmistakesClick
+    TabOrder = 0
+  end
+end

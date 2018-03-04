@@ -13,13 +13,20 @@ type
   { Tf2 }
 
   Tf2 = class(TForm)
+    ClFrm: TBitBtn;
+    TestAgain: TBitBtn;
+    Clform: TBitBtn;
     showmistakes: TBitBtn;
     correct: TLabel;
     Label1: TLabel;
     percent: TLabel;
     incorrect: TLabel;
     total: TLabel;
+    procedure ClFrmClick(Sender: TObject);
+    procedure ClformClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure showmistakesClick(Sender: TObject);
+    procedure TestAgainClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -36,6 +43,7 @@ var
 implementation
 
 {$R *.lfm}
+Uses mainf;
 
 { Tf2 }
 
@@ -64,8 +72,35 @@ end;
 
 procedure Tf2.showmistakesClick(Sender: TObject);
 begin
- mistakesinfo(str);
+  mistakesinfo(str);
   f3.show;
+end;
+
+procedure Tf2.TestAgainClick(Sender: TObject);
+begin
+  f2.Hide;
+  f1.Close;
+end;
+
+procedure Tf2.FormCloseQuery(Sender: TObject; var CanClose: boolean);
+begin
+  if CloseProgram then
+  begin
+     CanClose:=true;
+     Application.Terminate;
+  end
+  else
+    CanClose:=false;
+end;
+
+procedure Tf2.ClformClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure Tf2.ClFrmClick(Sender: TObject);
+begin
+  close;
 end;
 
 end.
